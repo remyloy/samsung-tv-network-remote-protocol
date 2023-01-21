@@ -1,0 +1,20 @@
+[package]
+name = "samsung-tv-network-remote-protocol"
+categories = ["network-programming", "parser-implementations"]
+description = "A library for implementing a network remote for a Samsung TV"
+keywords = ["samsung", "network", "remote"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/remyloy/samsung-tv-network-remote-protocol"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+base64 = "0.21.0"
+tokio = { version = "1.24", optional = true }
+
+[features]
+default = []
+tokio = ["dep:tokio", "tokio/net", "tokio/io-util"]
