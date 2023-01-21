@@ -5,7 +5,7 @@ type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 /// All the possible key codes.
 /// See also [Samygo](http://wiki.samygo.tv/index.php?title=Key_codes).
 #[allow(dead_code)]
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum KeyCode {
     #[doc = "KEY_MENU"]
     Menu,
