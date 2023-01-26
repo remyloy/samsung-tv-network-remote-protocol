@@ -61,7 +61,10 @@ pub fn create_authenticate_msg(
 /// Parses the authentication response.
 pub fn parse_authenticate_rsp(buf: &[u8]) -> Result<AuthenticateResponse> {
     const PAYLOAD_OFFSET: usize = 0x11;
-    let prelude: [u8; PAYLOAD_OFFSET] = buf[0..PAYLOAD_OFFSET].try_into()?;
+    let prelude: [u8; PAYLOAD_OFFSET] = buf
+        .get(0..PAYLOAD_OFFSET)
+        .ok_or_else(|| invalid_data(format!("unexpected response for authentication request")))?
+        .try_into()?;
     let reserved = prelude[0];
     assert!(reserved == 0 || reserved == 2);
     let device_name = parse_string(&prelude[1..])?;
