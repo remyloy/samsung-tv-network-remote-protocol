@@ -12,7 +12,7 @@ and the crate `local-ip-address` to determine the local IP address.
 
 It connects to the TV, then authenticates the connection and sends a volume up key.
 
-```text
+```rs
 #[tokio::main]
 async fn main() -> Result<()> {
     let tv_ip = "192.168.1.234:55000";
